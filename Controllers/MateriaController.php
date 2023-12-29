@@ -42,15 +42,15 @@ class MateriaController
     public function update()
     {
         $id = $_GET['id'];
-        $correo = $_POST['correo'];
-        $hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $rol_id = $_POST['rol'];
+        $materia_id = $_POST['materia_id'];
+        $maestro_id = $_POST['maestro_id'];
+        
 
 
         $cliente = new Materia;
-        $cliente->update($id, $correo, $hash, $rol_id);
+        $cliente->update($id, $materia_id);
 
-        header('location: ../index.php?controller=UserController&action=index');
+        header('location: ../index.php?controller=MateriaController&action=index');
     }
 
     // Eliminar un registro de la tabla
@@ -63,7 +63,7 @@ class MateriaController
             $usuario->delete($id);
 
 
-            header('location: ../index.php?controller=UserController&action=index');
+            header('location: ../index.php?controller=MateriaController&action=index');
         }
     }
 

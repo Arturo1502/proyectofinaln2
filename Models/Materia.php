@@ -72,13 +72,13 @@ class Materia
     }
 
     //actualizar un usuario
-    public function update($id, $correo, $password, $rol_id)
+    public function update($id, $materia_id)
     {
-        $query = "UPDATE usuarios SET correo = ?, password = ?, rol_id = ? WHERE id = ?";
+        $query = "UPDATE usuarios SET materia_id = ? WHERE id = ?";
 
         try {
             $stm = $this->conexion->prepare($query);
-            $stm->execute([$correo, $password, $rol_id, $id]);
+            $stm->execute([$id, $materia_id]);
         } catch (\PDOException $e) {
             echo $e->getMessage();
         }

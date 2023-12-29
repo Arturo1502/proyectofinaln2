@@ -26,16 +26,15 @@
         background-color: #F5F6FA;
     }
 
-    .kk{
+    .kk {
         display: flex;
         background-color: #FEBF06;
         width: 110px;
         height: 24px;
-        padding-left: 4px ;
-        border-radius: 10px ;
-        
-    }
+        padding-left: 4px;
+        border-radius: 10px;
 
+    }
 </style>
 
 <body>
@@ -121,8 +120,57 @@
 
 
                             <td>
-                                <a href="../index.php?controller=UserController&action=updateView&id=<?= $usuario['id'] ?>" class="fa-regular fa-pen-to-square" style="color: green;"></a>
-                                <a href="../index.php?controller=UserController&action=destroy&id=<?= $usuario['id'] ?>" class="fa-solid fa-trash-can " style="color: rgb(170, 11, 11);;"></a>
+                                <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+                                <!-- JavaScript de Bootstrap-->
+                                <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+                                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+                                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+                                <a href="#" data-toggle="modal" data-target="#actualizarMateria<?= $usuario['id'] ?>" class="fa-regular fa-pen-to-square" style="color: green;"></a>
+
+
+
+                                <div class="modal fade" id="actualizarMateria<?= $usuario['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="actualizarMateriaLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="actualizarMateriaLabel">Editar Clase</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <form action="../index.php?controller=MateriaController&action=update&id=<?= $usuario['id'] ?> " method="POST">
+                                                    <div class="mb-3">
+                                                        <select class="form-select" name="materia_id" id="materia_id">
+                                                            <option value="" disabled selected><strong>Nombre de la Materia</strong></option>
+                                                            <?php foreach ($data as $materia) : ?>
+                                                                <option value="<?= $materia['id'] ?>"><?= $materia['materia']  ?></option>
+                                                            <?php endforeach; ?>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <select class="form-select" name="maestro_id" id="maestro_id">
+                                                            <option value="" disabled selected><strong>Maestro Asignado</strong></option>
+                                                            <?php foreach ($maestros as $maestro) : ?>
+                                                                <option value="<?= $maestro['id'] ?>"><?= $maestro['nombre'] . " " . $maestro['apellido']?></option>
+                                                            <?php endforeach; ?>
+                                                        </select>
+                                                    </div>
+                                                    
+                                            </div>
+                                            <div class="mb-3">
+                                                <button type="submit" class="btn btn-secondary">enviar</button>
+                                            </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <a href="../index.php?controller=MateriaController&action=destroy&id=<?= $materia['id'] ?>" class="fa-solid fa-trash-can " style="color: rgb(170, 11, 11);;"></a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
