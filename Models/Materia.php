@@ -25,6 +25,7 @@ class Materia
         RIGHT JOIN materias ON materias.id = usuarios.materia_id";
 
 
+
         try {
             $stm = $this->conexion->prepare($query);
             $stm->execute();

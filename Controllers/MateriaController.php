@@ -46,6 +46,7 @@ class MateriaController
         $hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $rol_id = $_POST['rol'];
 
+
         $cliente = new Materia;
         $cliente->update($id, $correo, $hash, $rol_id);
 
@@ -69,7 +70,6 @@ class MateriaController
     public function store()
     {
         $materia =  $_POST['materia'];
-
         $maestro =  $_POST['maestro'];
 
 

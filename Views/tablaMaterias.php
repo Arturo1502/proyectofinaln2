@@ -33,6 +33,7 @@
         height: 24px;
         padding-left: 4px ;
         border-radius: 10px ;
+        
     }
 
 </style>
