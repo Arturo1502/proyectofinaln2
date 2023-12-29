@@ -5,7 +5,6 @@ use Models\Roles;
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/Vendor/autoload.php';
 
-
 class AuthController
 {
     public function login()

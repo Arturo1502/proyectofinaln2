@@ -18,6 +18,7 @@ if (isset($_SESSION['userData'])) {
 }
 
 
+
 require_once  $_SERVER['DOCUMENT_ROOT'] . '/Views/templates/header.php';
 
 if (isset($_GET['action']) && isset($_GET['controller'])) {

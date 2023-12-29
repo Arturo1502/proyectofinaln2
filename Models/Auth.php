@@ -51,6 +51,5 @@ class Auth
 }
 
 // $prueba = new Auth();
-
 // $prueba->register("", "", "admin@admin", "admin", "", "", 2, 1);
 
