@@ -34,7 +34,7 @@
         padding-left: 4px ;
         border-radius: 10px ;
     }
-    
+
 </style>
 
 <body>
@@ -213,8 +213,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
 
                                 <a href="../index.php?controller=MaestroController&action=destroy&id=<?= $usuario['id'] ?>" class="fa-solid fa-trash-can " style="color: rgb(170, 11, 11);;"></a>
                             </td>

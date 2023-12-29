@@ -39,7 +39,6 @@ class MaestroController
     }
 
     // actualizar un registro
-
     public function updateView()
     {
         $roles = new Roles;

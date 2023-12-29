@@ -52,6 +52,7 @@ class Maestro
     }
 
     // encontrar el usuario donde el id se igual a ?
+
     public function find($id)
     {
 
@@ -95,4 +96,3 @@ class Maestro
         }
     }
 }
-

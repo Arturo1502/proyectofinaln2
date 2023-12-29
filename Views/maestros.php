@@ -15,6 +15,7 @@
         padding: 0;
     }
 
+    
     .nav {
         background-color: #007bff;
         border: 10px solid red;
