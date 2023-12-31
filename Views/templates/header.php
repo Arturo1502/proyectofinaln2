@@ -66,7 +66,7 @@ if ($userData['rol_id'] == 1) {
 
                     <div class="dropdown-content" id="dropdown-content">
                         <div class="contenidoDrop">
-                            <a href="/personalInfo.php" class="fa-solid fa-circle-user" style="color: #4f4e4e;"></i>
+                            <a href="index.php?" class="fa-solid fa-circle-user" style="color: #4f4e4e;"></i>
                                 <p>Dashboard</p>
                             </a>
                             
