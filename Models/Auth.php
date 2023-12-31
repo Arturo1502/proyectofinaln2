@@ -32,6 +32,21 @@ class Auth
         }
     }
 
+    public function mmm($email){
+        $query= "SELECT materias.materia FROM `materias` INNER JOIN usuarios on usuarios.materia_id = materias.id WHERE email = ?";
+
+        try {
+            $stm = $this->conexion->prepare($query);
+            $stm->execute([$email]);
+
+            $rs = $stm->fetch(\PDO::FETCH_ASSOC);
+
+            return $rs;
+        } catch (\PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
 
     public function register($nombre, $apellido, $email, $password, $direccion, $nacimiento, $rol_id, $materia_id)
     {
@@ -49,7 +64,3 @@ class Auth
         }
     }
 }
-
-// $prueba = new Auth();
-// $prueba->register("", "", "admin@admin", "admin", "", "", 2, 1);
-

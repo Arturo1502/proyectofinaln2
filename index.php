@@ -4,13 +4,14 @@ session_start();
 if (isset($_SESSION['userData'])) {
     $userData = $_SESSION['userData'];
 
-    $cliente  = ['Clases' => "index.php?controller=MateriaController&action=show"];
+
+    $maestro  = ['Clases' => "index.php?controller=LoginMaestroController&action=index"];
     $admin = ['Permisos' => 'index.php?controller=PermisosController&action=index', 'Maestros' => 'index.php?controller=MaestroController&action=index', 'Clases' => 'index.php?controller=MateriaController&action=index'];
 
     if ($userData['rol_id'] === 1) {
         $menu = $admin;
     } else if ($userData['rol_id'] === 2) {
-        $menu = $cliente;
+        $menu = $maestro;
     }
 } else {
     echo 'error en datos de credenciales';

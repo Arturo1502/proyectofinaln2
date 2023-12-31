@@ -16,7 +16,6 @@ class Maestro
         $this->conexion = $database->getConn();
     }
 
-    // cargar todo los usuarios
     public function all()
     {
 
@@ -51,25 +50,7 @@ class Maestro
         }
     }
 
-    // encontrar el usuario donde el id se igual a ?
 
-    public function find($id)
-    {
-
-        $query = 'SELECT * FROM usuarios Where id = ?';
-
-        try {
-            $stm = $this->conexion->prepare($query);
-            $stm->execute([$id]);
-            $rs = $stm->fetchAll(\PDO::FETCH_ASSOC);
-
-            return $rs;
-        } catch (\PDOException $e) {
-            echo $e->getMessage();
-        }
-    }
-
-    //actualizar un usuario
     public function update($nombre, $apellido, $email, $direccion, $nacimiento, $id)
     {
         $query = "UPDATE usuarios SET nombre = ?, apellido = ?, email = ?, direccion = ? ,nacimiento = ? WHERE id = ?";
@@ -82,7 +63,7 @@ class Maestro
         }
     }
 
-    //eliminar un usuario
+
     public function delete($id)
     {
 

@@ -175,7 +175,7 @@
         </div>
     </div>
 
-    <!-- Tu tabla existente -->
+
     <div class="row">
         <div class="col-12">
             <table id="datatable_users" class="table table-striped">

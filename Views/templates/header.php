@@ -7,7 +7,7 @@ if ($userData['rol_id'] == 1) {
     $user = 'Administrador';
     $titulo = 'Admin';
 } elseif ($userData['rol_id'] == 2) {
-    $user = 'Maestro';
+    $user = $userData['nombre']. " ". $userData['apellido'];
     $titulo = 'Maestro';
 }
 
@@ -46,7 +46,8 @@ if ($userData['rol_id'] == 1) {
         </div>
         <hr>
         <ul>
-            <h4>Menu <?= $user ?></h4>
+            <h4>Menu </h4>
+                <h5 style="margin-left: 30px;"><?= $user ?></h5>
             <?php foreach ($menu as $key => $options) : ?>
                 <li> <a href="<?= $options ?>"><?= $key ?></a></li>
             <?php endforeach; ?>

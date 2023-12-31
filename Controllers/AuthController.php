@@ -17,10 +17,13 @@ class AuthController
         $auth = new Auth;
         $user = $auth->select($email);
 
+        $maestro = $auth->mmm($email);
+
         if (password_verify($password, $user['password']) && $user['status'] === 1) {
 
             session_start();
             $_SESSION['userData'] =  $user;
+            $_SESSION['maestroData'] = $maestro;
 
             header('location: ../index.php');
         } else {
@@ -34,13 +37,6 @@ class AuthController
         session_destroy();
         header('location: ../index.php');
     }
-
-
-    public function create()
-    {
-
-    }
-
 
     public function store()
     {

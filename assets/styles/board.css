@@ -145,7 +145,7 @@ section nav {
 /* Style the dropdown content (hidden by default) */
 .dropdown-content {
     display: none;
-    position: absolute;
+    position: fixed;
     top: 60px;
     right: 20px;
     background-color: #f9f9f9;
@@ -170,7 +170,7 @@ section nav {
 }
 
 .dropdown-content>.contenidoDrop {
-    display: block;
+    display: none;
     align-items: center;
     display: inline-block;
     margin: 14px 16px;
