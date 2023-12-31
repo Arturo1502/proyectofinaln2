@@ -17,7 +17,7 @@ class AuthController
         $auth = new Auth;
         $user = $auth->select($email);
 
-        if (password_verify($password, $user['password'])) {
+        if (password_verify($password, $user['password']) && $user['status'] === 1) {
 
             session_start();
             $_SESSION['userData'] =  $user;

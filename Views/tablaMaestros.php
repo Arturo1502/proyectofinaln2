@@ -64,7 +64,7 @@
     .dropdown-content {
         display: none;
         position: fixed;
-        top: 60px;
+        top: 50px;
         right: 20px;
         background-color: #f9f9f9;
         min-width: 160px;
@@ -325,7 +325,7 @@
             $('#datatable_users').DataTable({
                 lengthMenu: [5, 10, 15, 20],
                 searching: true,
-                pageLength: 10
+                pageLength: 5
             });
         });
     </script>

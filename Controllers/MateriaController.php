@@ -3,6 +3,7 @@
 use Models\Roles;
 use Models\Materia;
 
+
 require_once $_SERVER['DOCUMENT_ROOT'] . '/Vendor/autoload.php';
 
 class MateriaController
@@ -16,6 +17,10 @@ class MateriaController
 
         $maestros = $clientes->maestros();
 
+        $maestrosSinasignar = $clientes-> maestrosSinasignar();
+
+        
+
         require_once $_SERVER['DOCUMENT_ROOT'] . '/Views/tablaMaterias.php';
     }
 
@@ -25,6 +30,8 @@ class MateriaController
     {
         $usuario = new Materia;
         $usuarioPar = $usuario->find($id);
+
+        
 
         require_once $_SERVER['DOCUMENT_ROOT'] . 'Views/maestros.php';
     }
@@ -41,17 +48,37 @@ class MateriaController
 
     public function update()
     {
-        $id = $_GET['id'];
+        // $id = $_GET['id'];
         $materia_id = $_POST['materia_id'];
         $maestro_id = $_POST['maestro_id'];
         
 
 
         $cliente = new Materia;
-        $cliente->update($id, $materia_id);
+        $cliente->update($materia_id, $maestro_id);
 
         header('location: ../index.php?controller=MateriaController&action=index');
     }
+
+
+
+    public function updateMateria()
+    {
+        $id = $_GET['id'];
+        $materia = $_POST['materia'];
+        $maestro_id = $_POST['maestro_id'];
+        
+
+
+        $cliente = new Materia;
+
+        $cliente->encontrar($materia, $maestro_id);
+
+        
+
+        header('location: ../index.php?controller=MateriaController&action=index');
+    }
+
 
     // Eliminar un registro de la tabla
     public function destroy()
@@ -80,3 +107,5 @@ class MateriaController
         header('location: ../index.php?controller=MateriaController&action=index');
     }
 }
+
+

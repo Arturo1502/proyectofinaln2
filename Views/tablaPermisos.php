@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,11 +7,16 @@
     <title>Universidad </title>
 
 
+
     <script src="/JS/main.js" defer></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
 </head>
 <style>
+    .subtitle {
+        font-size: 1.2rem;
+    }
+
     .table {
         width: 90%;
         margin: 20px auto;
@@ -21,7 +25,7 @@
 
     .nav {
         background-color: #007bff;
-        border: 1px solid gray;
+        border: 10px solid red;
         height: 40px;
         text-align: left;
     }
@@ -30,22 +34,55 @@
         background-color: #F5F6FA;
     }
 
-    .kk {
+    .rolAdmin {
         display: flex;
-        background-color: #FEBF06;
+        background-color: #FCC118;
+        color: #866001;
         width: 110px;
         height: 24px;
         padding-left: 4px;
         border-radius: 10px;
-
     }
 
+    .rolMaestro {
+        display: flex;
+        background-color: #86C0CB;
+        color: #D6FAFB;
+        width: 70px;
+        height: 24px;
+        padding-left: 5px;
+        border-radius: 10px;
+    }
+
+    .activo {
+        display: flex;
+        background-color: #2BA647;
+        color: #fafffa;
+        width: 58px;
+        height: 24px;
+        padding-left: 5px;
+        border-radius: 10px;
+    }
+
+    .inactivo {
+        display: flex;
+        background-color: #DC3644;
+        color: #fafffa;
+        width: 70px;
+        height: 24px;
+        padding-left: 5px;
+        border-radius: 10px;
+    }
+
+    /* Dropdown container - needed to position the dropdown content */
     .dropdown {
         float: left;
         overflow: hidden;
 
     }
 
+
+    /* Style the dropdown button to fit inside the topnav */
     .dropdown .dropbtn {
         font-size: 17px;
         border: none;
@@ -57,10 +94,12 @@
         margin-right: 20px;
     }
 
+
+    /* Style the dropdown content (hidden by default) */
     .dropdown-content {
         display: none;
         position: fixed;
-        top: 60px;
+        top: 50px;
         right: 20px;
         background-color: #f9f9f9;
         min-width: 160px;
@@ -70,7 +109,7 @@
         z-index: 1;
     }
 
-
+    /* Style the links inside the dropdown */
     .dropdown-content a {
         float: none;
         color: black;
@@ -121,6 +160,26 @@
     .show {
         display: block;
     }
+
+    .form-switch .form-check-input {
+        margin-left: 0;
+    }
+
+    .form-check-label {
+        margin-bottom: 0;
+        margin-left: 40px;
+    }
+
+    .form-check-input:checked {
+        background-color: #26A842;
+        border-color: #26A842;
+    }
+
+    .form-check-input {
+
+        background-color: #d35858;
+        border: 1px solid rgb(28 3 3 / 25%);
+    }
 </style>
 
 <body>
@@ -130,118 +189,104 @@
                 <h2 class="titulo">Lista de Materias</h2>
             </div>
         </div>
-        <div class="row mb-3">
-            <div class="col-12">
-
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Agregar clase
-                </button>
-            </div>
-        </div>
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Agregar Clase</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-
-                        <form action="../index.php?controller=MateriaController&action=store" method="post">
-                            <div class="mb-3">
-                                <label for="email">Nombre de la materia</label>
-                                <input type="text" name="materia" class="form-control" placeholder="Ingresa materia">
-                            </div>
-
-                            <select name="maestro" class="form-select">
-                                <option value="" disabled selected>Select Maestro Disponible</option>
-                                <?php foreach ($maestrosSinasignar as $maestro) : ?>
-                                    <option value="<?= $maestro['id'] ?>"><?= $maestro['nombre'] . " " . $maestro['apellido'] ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                    </div>
-
-                    <div class="mb-3">
-                        <button type="submit" class="btn btn-secondary">enviar</button>
-                    </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
-        </div>
     </div>
 
+    <div>
+        <h2 class="subtitle">Informacion de Permisos</h2>
+    </div>
     <!-- Tu tabla existente -->
     <div class="row">
-        <div class="col-12">
+        <div class="col-md-11">
             <table id="datatable_users" class="table table-striped">
                 <thead class="bg-secondary text-white">
                     <tr>
-                        <th class="text-center">#</th>
-                        <th>Clase</th>
-                        <th>Maestro</th>
-                        <th>Acciones</th>
+                        <th class="text-center col-md-1">#</th>
+                        <th class="col-md-4">Email</th>
+                        <th class="col-md-2">Permiso</th>
+                        <th class="col-md-2">Estado</th>
+                        <th class="col-md-1">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
 
+
                     <?php foreach ($data as $usuario) : ?>
                         <tr>
                             <td><?= $usuario['id'] ?></td>
-                            <td><?= $usuario['materia'] ?></td>
-                            <td><?php if (!isset($usuario['nombre'])) : ?>
-                                    <div class="kk">
-                                        <p>Sin asignación</p>
+                            <td><?= $usuario['email'] ?></td>
+                            <td><?php if (($usuario['rol_id'] == 1)) : ?>
+                                    <div class="rolAdmin">
+                                        <p>Administrador</p>
                                     </div>
                                 <?php else : ?>
-                                    <?= $usuario['nombre'] . " " . $usuario['apellido'] ?>
-                                <?php endif; ?>
-                            </td>
+                                    <div class="rolMaestro">
+                                        <p>Maestro</p>
+                                    </div>
 
+                                <?php endif ?>
+                            </td>
+                            <td><?php if (($usuario['status'] == 1)) : ?>
+                                    <div class="activo">
+                                        <p>Activo</p>
+                                    </div>
+                                <?php else : ?>
+                                    <div class="inactivo">
+                                        <p>Inactivo</p>
+                                    </div>
+
+                                <?php endif ?>
+                            </td>
 
                             <td>
                                 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
-                                <!-- JavaScript de Bootstrap-->
+                                <!-- JavaScript de Bootstrap (requiere jQuery) -->
                                 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
                                 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
                                 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
-                                <a href="#" data-toggle="modal" data-target="#actualizarMateria<?= $usuario['id'] ?>" class="fa-regular fa-pen-to-square" style="color: green;"></a>
+                                <a href="#" data-toggle="modal" data-target="#actualizarPermiso<?= $usuario['id'] ?>" class="fa-regular fa-pen-to-square" style="color: green;"></a>
 
 
 
-                                <div class="modal fade" id="actualizarMateria<?= $usuario['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="actualizarMateriaLabel" aria-hidden="true">
+                                <div class="modal fade" id="actualizarPermiso<?= $usuario['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="actualizarPermisoLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="actualizarMateriaLabel">Editar Clase</h5>
+                                                <h5 class="modal-title" id="actualizarPermisoLabel">Actualizar Permiso</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
 
-                                                <form action="../index.php?controller=MateriaController&action=updateMateria&id=<?= $usuario['id'] ?> " method="POST">
-                                                <!-- ayudame con este input por favor -->
+                                                <form action="../index.php?controller=PermisosController&action=update" method="POST">
                                                     <div class="mb-3">
-                                                        <label for="materia">Materia</label>
-                                                        <input type="text" name="materia" class="form-control" placeholder="materia" value="<?= $usuario['materia'] ?>">
+                                                        <label for="email">Correo Electronico</label>
+                                                        <input type="text" name="email" class="form-control" placeholder="Actualice su correo" value="<?= $usuario['email'] ?>">
                                                     </div>
+
                                                     <div class="mb-3">
-                                                        <select class="form-select" name="maestro_id" id="maestro_id">
-                                                            <option value="" disabled selected><strong>Maestro Disponible</strong></option>
-                                                            <option value=""><strong>Sin asignar</strong></option>
-                                                            <?php foreach ($maestros as $maestro) : ?>
-                                                                <option value="<?= $maestro['id'] ?>"><?= $maestro['nombre'] . " " . $maestro['apellido'] ?></option>
+                                                        <label for="rol_id">Rol del usuario</label>
+                                                        <select class="form-select" name="rol_id" id="rol_id">
+                                                            <option value="" disabled selected><strong>Rol del Usuario</strong></option>
+                                                            <?php foreach ($roles as $rol) : ?>
+                                                                <option value="<?= $rol['id'] ?>"><?= $rol['rol']  ?></option>
                                                             <?php endforeach; ?>
                                                         </select>
                                                     </div>
+
+                                                    <div class="mb-10">
+                                                        <div class="form-check form-switch">
+                                                            <input type="hidden" name="status_actual" value="<?= $usuario['status'] ?>">
+                                                            <input class="form-check-input" type="checkbox" name="status" id="flexSwitchCheckChecked" <?= ($usuario['status'] == 1) ? 'checked' : ''; ?>>
+                                                            <label class="form-check-label" for="flexSwitchCheckChecked">
+                                                                <?php echo ($usuario['status'] == 1) ? 'Usuario Activo' : 'Usuario Inactivo'; ?>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
 
                                             </div>
                                             <div class="mb-3">
@@ -252,7 +297,7 @@
                                     </div>
                                 </div>
 
-                                <a href="../index.php?controller=MateriaController&action=destroy&id=<?= $usuario['id'] ?>" class="fa-solid fa-trash-can " style="color: rgb(170, 11, 11);;"></a>
+
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -280,5 +325,3 @@
 </body>
 
 </html>
-
-<!-- <a href="../index.php?controller=AuthController&action=create" class="btn btn-secondary">Nuevo Usuario</a> -->

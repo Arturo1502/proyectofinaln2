@@ -5,7 +5,7 @@ if (isset($_SESSION['userData'])) {
     $userData = $_SESSION['userData'];
 
     $cliente  = ['Clases' => "index.php?controller=MateriaController&action=show"];
-    $admin = ['Permisos' => 'index.php?', 'Maestros' => 'index.php?controller=MaestroController&action=index', 'Alumnos' => 'index.php?', 'Clases' => 'index.php?controller=MateriaController&action=index'];
+    $admin = ['Permisos' => 'index.php?controller=PermisosController&action=index', 'Maestros' => 'index.php?controller=MaestroController&action=index', 'Clases' => 'index.php?controller=MateriaController&action=index'];
 
     if ($userData['rol_id'] === 1) {
         $menu = $admin;

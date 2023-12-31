@@ -54,6 +54,40 @@ class Materia
         }
     }
 
+    public function maestrosSinasignar()
+    {
+
+        $query = 'SELECT * FROM usuarios WHERE rol_id = 2 AND materia_id IS NULL';
+
+
+        try {
+            $stm = $this->conexion->prepare($query);
+            $stm->execute();
+            $rs = $stm->fetchAll(\PDO::FETCH_ASSOC);
+
+            return $rs;
+        } catch (\PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function materias()
+    {
+
+        $query = 'SELECT * FROM materias WHERE rol_id = 2';
+
+
+        try {
+            $stm = $this->conexion->prepare($query);
+            $stm->execute();
+            $rs = $stm->fetchAll(\PDO::FETCH_ASSOC);
+
+            return $rs;
+        } catch (\PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
     // encontrar el usuario donde el id se igual a ?
     public function find($id)
     {
@@ -71,14 +105,48 @@ class Materia
         }
     }
 
-    //actualizar un usuario
-    public function update($id, $materia_id)
-    {
-        $query = "UPDATE usuarios SET materia_id = ? WHERE id = ?";
+        
+    public function encontrar($materia, $maestro_id)
+{
 
+    $query = "SELECT `id` FROM materias WHERE materia=?";
+
+    try {
+
+        $stm = $this->conexion->prepare($query);
+        $stm->execute([$materia]);
+        $result = $stm->fetch(\PDO::FETCH_ASSOC);
+
+        if ($result) {
+
+            $materia_id = $result['id'];
+            $this->update($materia_id, $maestro_id);
+        }
+
+    } catch (\PDOException $e) {
+        echo $e->getMessage();
+    }
+}
+
+
+
+    //actualizar un usuario
+    public function update($materia_id, $id)
+    {
+        $query = "UPDATE usuarios SET materia_id = ?  Where id=? ";
         try {
             $stm = $this->conexion->prepare($query);
-            $stm->execute([$id, $materia_id]);
+            $stm->execute([$materia_id, $id]);
+        } catch (\PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+    public function null($id)
+    {
+        $query = "UPDATE usuarios SET materia_id = NULL  Where id= ?";
+        try {
+            $stm = $this->conexion->prepare($query);
+            $stm->execute([$id]);
         } catch (\PDOException $e) {
             echo $e->getMessage();
         }
@@ -88,7 +156,7 @@ class Materia
     public function delete($id)
     {
 
-        $query = 'DELETE FROM usuarios WHERE id = ?';
+        $query = 'DELETE FROM materias WHERE id = ?';
 
         try {
             $stm = $this->conexion->prepare($query);
@@ -98,17 +166,34 @@ class Materia
         }
     }
 
-    public function register($materia, $maestro)
+    public function register($materia, $user_id)
     {
-        $query = "INSERT INTO `materias`(`materia`, `usuario_id`) VALUES (?,?)";
+        $query = "INSERT INTO materias(materia) VALUES (?)";
+
 
         try {
             $stm = $this->conexion->prepare($query);
-            $stm->execute([$materia, $maestro]);
-
+            $stm->execute([$materia]);
+            if ($user_id) {
+                $last_id = $this->conexion->lastInsertId();
+                $this->update($last_id, $user_id);
+            }
             return true;
         } catch (\PDOException $e) {
             echo $e->getMessage();
         }
     }
+
+    public function getMateriaRelacionada($materiaId)
+{
+    // Realiza una consulta para obtener la información de la materia
+    $query = "SELECT * FROM materias WHERE id = :materia_id";
+    $stmt = $this->conexion->prepare($query);
+    $stmt->bindParam(':materia_id', $materiaId, \PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetch(\PDO::FETCH_ASSOC);
 }
+
+
+}
+
