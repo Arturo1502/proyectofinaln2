@@ -105,28 +105,26 @@ class Materia
         }
     }
 
-        
+
     public function encontrar($materia, $maestro_id)
-{
+    {
 
-    $query = "SELECT `id` FROM materias WHERE materia=?";
+        $query = "SELECT `id` FROM materias WHERE materia=?";
 
-    try {
+        try {
+            $stm = $this->conexion->prepare($query);
+            $stm->execute([$materia]);
+            $result = $stm->fetch(\PDO::FETCH_ASSOC);
 
-        $stm = $this->conexion->prepare($query);
-        $stm->execute([$materia]);
-        $result = $stm->fetch(\PDO::FETCH_ASSOC);
+            if ($result) {
 
-        if ($result) {
-
-            $materia_id = $result['id'];
-            $this->update($materia_id, $maestro_id);
+                $materia_id = $result['id'];
+                $this->update($materia_id, $maestro_id);
+            }
+        } catch (\PDOException $e) {
+            echo $e->getMessage();
         }
-
-    } catch (\PDOException $e) {
-        echo $e->getMessage();
     }
-}
 
 
 
@@ -141,6 +139,8 @@ class Materia
             echo $e->getMessage();
         }
     }
+
+
     public function null($id)
     {
         $query = "UPDATE usuarios SET materia_id = NULL  Where id= ?";
@@ -185,15 +185,12 @@ class Materia
     }
 
     public function getMateriaRelacionada($materiaId)
-{
-    // Realiza una consulta para obtener la información de la materia
-    $query = "SELECT * FROM materias WHERE id = :materia_id";
-    $stmt = $this->conexion->prepare($query);
-    $stmt->bindParam(':materia_id', $materiaId, \PDO::PARAM_INT);
-    $stmt->execute();
-    return $stmt->fetch(\PDO::FETCH_ASSOC);
+    {
+        // Realiza una consulta para obtener la información de la materia
+        $query = "SELECT * FROM materias WHERE id = :materia_id";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->bindParam(':materia_id', $materiaId, \PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
 }
-
-
-}
-
