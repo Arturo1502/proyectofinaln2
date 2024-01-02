@@ -1,12 +1,9 @@
 <?php
 if (isset($_SESSION['maestroData']) && !empty($_SESSION['maestroData'])) {
     $materia = $_SESSION['maestroData'];
-    
-    
 } 
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -132,6 +129,7 @@ if (isset($_SESSION['maestroData']) && !empty($_SESSION['maestroData'])) {
         <div class="row">
             <div class="col-12">
                 <h2 class="titulo">Curso Asignado <?=$materia['materia']?></h2>
+                
 
 
             </div>

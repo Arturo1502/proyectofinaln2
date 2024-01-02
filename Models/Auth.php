@@ -33,6 +33,7 @@ class Auth
     }
 
     public function seleccionarMateria($email){
+        
         $query= "SELECT materias.materia FROM `materias` INNER JOIN usuarios on usuarios.materia_id = materias.id WHERE email = ?";
 
         try {

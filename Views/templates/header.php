@@ -24,7 +24,7 @@ if ($userData['rol_id'] == 1) {
     <link rel="shortcut icon" href="/assets/logo.jpg">
 
 
-    <script src="/JS/main.js" defer></script>
+    <script src="/js/main.js" defer></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="https://kit.fontawesome.com/2ed691f658.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/e40dfd2f11.js" crossorigin="anonymous"></script>
