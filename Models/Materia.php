@@ -16,7 +16,7 @@ class Materia
         $this->conexion = $database->getConn();
     }
 
-    // cargar todo los usuarios
+
     public function all()
     {
 
@@ -88,7 +88,7 @@ class Materia
         }
     }
 
-    // encontrar el usuario donde el id se igual a ?
+
     public function find($id)
     {
 
@@ -184,13 +184,4 @@ class Materia
         }
     }
 
-    public function getMateriaRelacionada($materiaId)
-    {
-        // Realiza una consulta para obtener la información de la materia
-        $query = "SELECT * FROM materias WHERE id = :materia_id";
-        $stmt = $this->conexion->prepare($query);
-        $stmt->bindParam(':materia_id', $materiaId, \PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetch(\PDO::FETCH_ASSOC);
-    }
 }

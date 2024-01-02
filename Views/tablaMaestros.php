@@ -195,14 +195,11 @@
                                     <?php endforeach; ?>
                                 </select>
                             </div>
-                            <!--  <div class="mb-3">
-                                <label for="fechaNacimiento"><strong>asignatura</strong></label>
-                                <input type="text" name='asignatura_id' class="form-control" id="asignatura_id">
-                            </div> -->
+                            
 
                     </div>
 
-                    <div class="text-center pb-4"> <!-- Contenedor para centrar el botón -->
+                    <div class="text-center pb-4"> 
                         <button type="submit" class="btn btn-secondary">Enviar</button>
                     </div>
                     </form>
@@ -214,7 +211,7 @@
         </div>
     </div>
 
-    <!-- Tu tabla existente -->
+
     <div class="row">
         <div class="col-12">
             <table id="datatable_users" class="table table-striped">
@@ -257,11 +254,11 @@
                                 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
-                                <a href="#" data-toggle="modal" data-target="#actualizarUsuario<?= $usuario['id'] ?>" class="fa-regular fa-pen-to-square" style="color: green;"></a>
+                                <a href="#" data-toggle="modal" data-target="#actualizarUsuario<?=$usuario['id'] ?>" class="fa-regular fa-pen-to-square" style="color: green;"></a>
 
 
 
-                                <div class="modal fade" id="actualizarUsuario<?= $usuario['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="actualizarUsuarioLabel" aria-hidden="true">
+                                <div class="modal fade" id="actualizarUsuario<?=$usuario['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="actualizarUsuarioLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">

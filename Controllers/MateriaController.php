@@ -48,7 +48,7 @@ class MateriaController
 
     public function update()
     {
-        // $id = $_GET['id'];
+        
         $materia_id = $_POST['materia_id'];
         $maestro_id = $_POST['maestro_id'];
         

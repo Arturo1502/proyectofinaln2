@@ -227,7 +227,7 @@
                                             </div>
                                             <div class="modal-body">
 
-                                                <form action="../index.php?controller=MateriaController&action=updateMateria&id=<?= $usuario['id'] ?> " method="POST">
+                                                <form action="../index.php?controller=MateriaController&action=updateMateria" method="POST">
                                                 <!-- ayudame con este input por favor -->
                                                     <div class="mb-3">
                                                         <label for="materia">Materia</label>

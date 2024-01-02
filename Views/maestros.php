@@ -1,5 +1,11 @@
 <?php
-    print_r($userData['rol_id'])
+if (isset($_SESSION['maestroData']) && !empty($_SESSION['maestroData'])) {
+    $materia = $_SESSION['maestroData'];
+    
+    
+} 
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -122,45 +128,45 @@
 </style>
 
 <body>
-<div class="container my-4">
+    <div class="container my-4">
         <div class="row">
             <div class="col-12">
-                <h2 class="titulo">Curso Asignado</h2>
+                <h2 class="titulo">Curso Asignado <?=$materia['materia']?></h2>
 
 
             </div>
         </div>
-    <div class="row">
+        <div class="row">
 
-        <div class="col-12">
-            <table id="datatable_users" class="table table-striped">
-                <thead class="bg-secondary text-white">
-                    <tr>
-                        <th class="text-center">#</th>
-                        <th>Nombre del alumno</th>
-                        <th>Calificacion</th>
-                        <th>Mensajes</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <div class="col-12">
+                <table id="datatable_users" class="table table-striped">
+                    <thead class="bg-secondary text-white">
+                        <tr>
+                            <th class="text-center">#</th>
+                            <th>Nombre del alumno</th>
+                            <th>Calificacion</th>
+                            <th>Mensajes</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-                    <tr>
-                        <td>1</td>
-                        <td>Carlos Quijano</td>
-                        <td> </td>
-                        <td>No hay mensajes</td>
-                        <td></td>
-                        <td>
-                            <a class="fa-regular fa-pen-to-square" style="color: green;"></a>
+                        <tr>
+                            <td>1</td>
+                            <td>Carlos Quijano</td>
+                            <td> </td>
+                            <td>No hay mensajes</td>
+                            <td></td>
+                            <td>
+                                <a class="fa-regular fa-pen-to-square" style="color: green;"></a>
 
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
     </div>
 
     <!-- Scripts JS -->

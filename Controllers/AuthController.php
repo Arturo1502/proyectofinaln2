@@ -1,7 +1,8 @@
 <?php
 
 use Models\Auth;
-use Models\Roles;
+
+
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/Vendor/autoload.php';
 
@@ -17,7 +18,7 @@ class AuthController
         $auth = new Auth;
         $user = $auth->select($email);
 
-        $maestro = $auth->mmm($email);
+        $maestro = $auth->seleccionarMateria($email);
 
         if (password_verify($password, $user['password']) && $user['status'] === 1) {
 
