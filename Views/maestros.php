@@ -1,7 +1,7 @@
 <?php
 if (isset($_SESSION['maestroData']) && !empty($_SESSION['maestroData'])) {
     $materia = $_SESSION['maestroData'];
-} 
+}
 ?>
 
 <!DOCTYPE html>
@@ -128,13 +128,11 @@ if (isset($_SESSION['maestroData']) && !empty($_SESSION['maestroData'])) {
     <div class="container my-4">
         <div class="row">
             <div class="col-12">
-                <h2 class="titulo">Curso Asignado <?=$materia['materia']?></h2>
-                
+                <?php if (isset($materia['materia'])) : ?>
+                    <h2 class="titulo">Alumnos de la Clase de <?= $materia['materia'] ?></h2>
 
 
-            </div>
-        </div>
-        <div class="row">
+                    <div class="row">
 
             <div class="col-12">
                 <table id="datatable_users" class="table table-striped">
@@ -152,12 +150,46 @@ if (isset($_SESSION['maestroData']) && !empty($_SESSION['maestroData'])) {
                         <tr>
                             <td>1</td>
                             <td>Carlos Quijano</td>
-                            <td> </td>
+                            <td> 95/100 </td>
                             <td>No hay mensajes</td>
-                            <td></td>
                             <td>
                                 <a class="fa-regular fa-pen-to-square" style="color: green;"></a>
-
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Arturo Alvarez</td>
+                            <td> 100/100 </td>
+                            <td>No hay mensajes</td>
+                            <td>
+                                <a class="fa-regular fa-pen-to-square" style="color: green;"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Joseph Smith</td>
+                            <td> 98/100 </td>
+                            <td>No hay mensajes</td>
+                            <td>
+                                <a class="fa-regular fa-pen-to-square" style="color: green;"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Luis Cruz</td>
+                            <td> 80/100 </td>
+                            <td>No hay mensajes</td>
+                            <td>
+                                <a class="fa-regular fa-pen-to-square" style="color: green;"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Gian Franco Herrera</td>
+                            <td> 65/100 </td>
+                            <td>No hay mensajes</td>
+                            <td>
+                                <a class="fa-regular fa-pen-to-square" style="color: green;"></a>
                             </td>
                         </tr>
 
@@ -165,6 +197,14 @@ if (isset($_SESSION['maestroData']) && !empty($_SESSION['maestroData'])) {
                 </table>
             </div>
         </div>
+                <?php else : ?>
+                    <h2 class="titulo">Sin Clase asignada</h2>
+
+                <?php endif ?>
+
+            </div>
+        </div>
+        
     </div>
 
     <!-- Scripts JS -->

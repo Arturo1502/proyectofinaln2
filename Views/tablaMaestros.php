@@ -217,13 +217,13 @@
             <table id="datatable_users" class="table table-striped">
                 <thead class="bg-secondary text-white">
                     <tr>
-                        <th class="text-center">#</th>
-                        <th>Nombres</th>
-                        <th>Email</th>
+                        <th style="width: 40px;" class="text-center">#</th>
+                        <th style="width: 180px;">Nombres</th>
+                        <th style="width: 170px;">Email</th>
                         <th>Dirección</th>
-                        <th>Fec. de Nacimiento</th>
-                        <th>Clase Asignada</th>
-                        <th>Acciones</th>
+                        <th style="width: 180px;">Fec. de Nacimiento</th>
+                        <th style="width: 150px;">Clase Asignada</th>
+                        <th style="width: 50px;">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -231,11 +231,11 @@
 
                     <?php foreach ($data as $usuario) : ?>
                         <tr>
-                            <td><?= $usuario['id'] ?></td>
+                            <td style="padding-left: 25px;"><?= $usuario['id'] ?></td>
                             <td><?= $usuario['nombre'] . " " . $usuario['apellido']  ?></td>
                             <td><?= $usuario['email'] ?></td>
                             <td><?= $usuario['direccion'] ?></td>
-                            <td><?= $usuario['nacimiento'] ?></td>
+                            <td ><?= $usuario['nacimiento'] ?></td>
                             <td><?php if (!isset($usuario['materia'])) : ?>
                                     <div class="kk">
                                         <p>Sin asignación</p>
@@ -245,7 +245,7 @@
 
                                 <?php endif ?>
                             </td>
-                            <td>
+                            <td >
                                 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
                                 <!-- JavaScript de Bootstrap (requiere jQuery) -->
@@ -255,8 +255,6 @@
 
 
                                 <a href="#" data-toggle="modal" data-target="#actualizarUsuario<?=$usuario['id'] ?>" class="fa-regular fa-pen-to-square" style="color: green;"></a>
-
-
 
                                 <div class="modal fade" id="actualizarUsuario<?=$usuario['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="actualizarUsuarioLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">

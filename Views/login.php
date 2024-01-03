@@ -42,11 +42,14 @@
             <li class="mb-2">User: admin@admin</li>
             <li class="mb-2">Pass: admin</li>
             <h4 class="mb-2">Maestros</h4>
-            <li class="mb-2">User: maestro@maestro</li>
+            <li class="mb-2">- User: maestro@maestro</li>
             <li class="mb-2">Pass: maestro</li>
-            <h4 class="mb-2">Alumno</h4>
-            <li class="mb-2">User: ***********</li>
-            <li class="mb-2">Pass: *****</li>
+            <!-- <h4 class="mb-2">Maestro 2</h4> -->
+            <li class="mb-2">- User: fabiola@fabiola<li>
+            <li class="mb-2">Pass: fabiola </li>
+
+            <li class="mb-2">- User: diego@diego<li>
+            <li class="mb-2">Pass: diego </li>
         </ul>
     </div>
 

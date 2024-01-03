@@ -5,6 +5,8 @@ body {
     background-color: #F5F6FA;
 }
 
+
+
 .dlogo {
     display: flex;
     align-items: center;
@@ -25,7 +27,11 @@ hr {
 }
 
 .role {
-    padding-left: 15px;
+    padding-left: 30px;
+}
+
+.dlogo > p{
+    margin-bottom: 0;
 }
 
 .menu {
@@ -43,17 +49,21 @@ ul>h4 {
 .menu ul {
     list-style: none;
     padding: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .menu li {
-    padding: 10px 0;
+    padding: 10px 22px;
+    display: flex;
+    align-items: center;
 }
 
 .menu a {
     color: #fff;
     text-decoration: none;
     display: block;
-    padding: 5px 25px;
+    padding: 5px 15px;
 }
 
 .menu li:hover {
@@ -62,16 +72,17 @@ ul>h4 {
 
 section {
     width: 100%;
-    padding-left: 10px;
+    padding: 0 20px;
+    
 }
 
 section nav {
     display: flex;
     justify-content: space-between;
     padding-top: 5px;
-    /* margin-left: 20px; */
+    margin-left: -20px;
     justify-self: auto;
-    width: 100%;
+    width: 103%;
     height: 35px;
     box-shadow: rgba(149, 157, 165, 0.2) 1px 2px 20px 1px;
     background-color: white;
@@ -193,6 +204,7 @@ section nav {
 .topnav a:hover,
 .dropdown:hover .dropbtn {
     background-color: #d6d6d6;
+    padding: 6px 15px;
 
 }
 

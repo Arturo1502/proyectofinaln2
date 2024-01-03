@@ -181,17 +181,17 @@
             <table id="datatable_users" class="table table-striped">
                 <thead class="bg-secondary text-white">
                     <tr>
-                        <th class="text-center">#</th>
+                        <th style="width: 50px;" class="text-center">#</th>
                         <th>Clase</th>
                         <th>Maestro</th>
-                        <th>Acciones</th>
+                        <th style="width: 100px;">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
 
                     <?php foreach ($data as $usuario) : ?>
                         <tr>
-                            <td><?= $usuario['id'] ?></td>
+                            <td style="padding-left: 25px;"><?= $usuario['id'] ?></td>
                             <td><?= $usuario['materia'] ?></td>
                             <td><?php if (!isset($usuario['nombre'])) : ?>
                                     <div class="kk">
@@ -228,7 +228,7 @@
                                             <div class="modal-body">
 
                                                 <form action="../index.php?controller=MateriaController&action=updateMateria" method="POST">
-                                                <!-- ayudame con este input por favor -->
+
                                                     <div class="mb-3">
                                                         <label for="materia">Materia</label>
                                                         <input type="text" name="materia" class="form-control" placeholder="materia" value="<?= $usuario['materia'] ?>">

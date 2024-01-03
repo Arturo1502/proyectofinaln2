@@ -7,7 +7,7 @@ if ($userData['rol_id'] == 1) {
     $user = 'Administrador';
     $titulo = 'Admin';
 } elseif ($userData['rol_id'] == 2) {
-    $user = $userData['nombre']. " ". $userData['apellido'];
+    $user = $userData['nombre'] . " " . $userData['apellido'];
     $titulo = 'Maestro';
 }
 
@@ -28,6 +28,7 @@ if ($userData['rol_id'] == 1) {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="https://kit.fontawesome.com/2ed691f658.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/e40dfd2f11.js" crossorigin="anonymous"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 </head>
@@ -47,9 +48,12 @@ if ($userData['rol_id'] == 1) {
         <hr>
         <ul>
             <h4>Menu </h4>
-                <h5 style="margin-left: 30px;"><?= $user ?></h5>
+            <h5 style="margin-left: 30px;"><?= $user ?></h5>
             <?php foreach ($menu as $key => $options) : ?>
-                <li> <a href="<?= $options ?>"><?= $key ?></a></li>
+                <li>
+                    <i class="' . <?= $options['icon'] ?> . '"></i>
+                    <a href="<?= $options['url'] ?>"><?= $key ?></a>
+                </li>
             <?php endforeach; ?>
         </ul>
     </div>
@@ -61,21 +65,21 @@ if ($userData['rol_id'] == 1) {
             </div>
             <div class="rigth">
                 <p><?= $user ?></p>
-            <div class="dropdown">
-                <div class="contenidoDropDown">
-                <button class="dropbtn" onclick="toggleDropdown()"><i id="flecha" class="fa fa-caret-down"></i></button>
+                <div class="dropdown">
+                    <div class="contenidoDropDown">
+                        <button class="dropbtn" onclick="toggleDropdown()"><i id="flecha" class="fa fa-caret-down"></i></button>
 
-                    <div class="dropdown-content" id="dropdown-content">
-                        <div class="contenidoDrop">
-                            <a href="index.php?" class="fa-solid fa-circle-user" style="color: #4f4e4e;"></i>
-                                <p>Dashboard</p>
-                            </a>
-                            
-                            <hr>
-                            <a class="logout" href="index.php?controller=AuthController&action=logout"><span class="material-symbols-outlined">exit_to_app</span>Logout</a>
+                        <div class="dropdown-content" id="dropdown-content">
+                            <div class="contenidoDrop">
+                                <a href="index.php?" class="fa-solid fa-circle-user" style="color: #4f4e4e;"></i>
+                                    <p>Dashboard</p>
+                                </a>
+
+                                <hr>
+                                <a class="logout" href="index.php?controller=AuthController&action=logout"><span class="material-symbols-outlined">exit_to_app</span>Logout</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
         </nav>
